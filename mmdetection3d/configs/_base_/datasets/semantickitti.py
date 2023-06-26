@@ -195,7 +195,7 @@ train_dataloader = dict(
         ignore_index=19,
         backend_args=backend_args))
 
-test_dataloader = dict(
+val_dataloader = dict(
     batch_size=1,
     num_workers=1,
     persistent_workers=True,
@@ -212,10 +212,33 @@ test_dataloader = dict(
         test_mode=True,
         backend_args=backend_args))
 
-val_dataloader = test_dataloader
+test_dataloader = dict(
+    batch_size=1,
+    num_workers=1,
+    persistent_workers=True,
+    drop_last=False,
+    sampler=dict(type='DefaultSampler', shuffle=False),
+    dataset=dict(
+        type=dataset_type,
+        data_root=data_root,
+        ann_file='semantickitti_infos_test.pkl',
+        pipeline=test_pipeline,
+        metainfo=metainfo,
+        modality=input_modality,
+        ignore_index=19,
+        test_mode=True,
+        backend_args=backend_args))
+
+# val_dataloader = test_dataloader
 
 val_evaluator = dict(type='SegMetric')
-test_evaluator = val_evaluator
+test_evaluator = dict(
+    type='SegMetric',
+    ann_file=data_root + 'semantickitti_infos_test.pkl',
+    metric='bbox',
+    format_only=True,
+    submission_prefix='results/kitti/kitti_results')
+# test_evaluator = val_evaluator
 
 vis_backends = [dict(type='LocalVisBackend')]
 visualizer = dict(
