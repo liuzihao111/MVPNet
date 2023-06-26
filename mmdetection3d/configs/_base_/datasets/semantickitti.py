@@ -222,7 +222,7 @@ test_dataloader = dict(
         type=dataset_type,
         data_root=data_root,
         ann_file='semantickitti_infos_test.pkl',
-        pipeline=eval_pipeline,
+        pipeline=test_pipeline,
         metainfo=metainfo,
         modality=input_modality,
         ignore_index=19,
@@ -234,10 +234,11 @@ test_dataloader = dict(
 val_evaluator = dict(type='SegMetric')
 test_evaluator = dict(
     type='SegMetric',
-    ann_file=data_root + 'semantickitti_infos_test.pkl',
-    metric='bbox',
-    format_only=True,
-    submission_prefix='results/kitti/kitti_results')
+    # ann_file=data_root + 'semantickitti_infos_test.pkl',
+    # metric='bbox',
+    # format_only=True,
+    # submission_prefix='results/kitti/kitti_results'
+    )
 # test_evaluator = val_evaluator
 
 vis_backends = [dict(type='LocalVisBackend')]
