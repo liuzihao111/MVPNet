@@ -1,0 +1,36 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Test",
+            "type": "python",
+            "cwd": "/workspace/MVP/mmdetection3d",
+            "request": "launch",
+            "module": "torch.distributed.launch",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--nproc_per_node=1",
+                "--master_port=29603",
+                "${cwd}/mmdetection3d/tools/test.py",
+                "${cwd}/mmdetection3d/configs/spvcnn/spvcnn_w32_8xb2-amp-laser-polar-mix-3x_semantickitti.py",
+                "${cwd}/mmdetection3d/ckpt/spvcnn_w32_8xb2-amp-laser-polar-mix-3x_semantickitti_20230425_125908-d68a68b7.pth",
+                "--launcher","pytorch"
+            ],
+            "env": {
+                "PYTHONPATH":"/workspace/MVP/mmdetection3d"
+            }
+        },
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
