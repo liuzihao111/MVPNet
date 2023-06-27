@@ -18,7 +18,8 @@
                 "${cwd}/mmdetection3d/tools/test.py",
                 "${cwd}/mmdetection3d/configs/spvcnn/spvcnn_w32_8xb2-amp-laser-polar-mix-3x_semantickitti.py",
                 "${cwd}/mmdetection3d/ckpt/spvcnn_w32_8xb2-amp-laser-polar-mix-3x_semantickitti_20230425_125908-d68a68b7.pth",
-                "--launcher","pytorch"
+                "--launcher","pytorch",
+                "--tta"
             ],
             "env": {
                 "PYTHONPATH":"/workspace/MVP/mmdetection3d"

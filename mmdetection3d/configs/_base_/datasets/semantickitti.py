@@ -133,16 +133,16 @@ tta_pipeline = [
         load_dim=4,
         use_dim=4,
         backend_args=backend_args),
-    dict(
-        type='LoadAnnotations3D',
-        with_bbox_3d=False,
-        with_label_3d=False,
-        with_seg_3d=True,
-        seg_3d_dtype='np.int32',
-        seg_offset=2**16,
-        dataset_type='semantickitti',
-        backend_args=backend_args),
-    dict(type='PointSegClassMapping'),
+    # dict(
+    #     type='LoadAnnotations3D',
+    #     with_bbox_3d=False,
+    #     with_label_3d=False,
+    #     with_seg_3d=True,
+    #     seg_3d_dtype='np.int32',
+    #     seg_offset=2**16,
+    #     dataset_type='semantickitti',
+    #     backend_args=backend_args),
+    # dict(type='PointSegClassMapping'),
     dict(
         type='TestTimeAug',
         transforms=[[
