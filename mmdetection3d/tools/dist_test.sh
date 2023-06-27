@@ -19,5 +19,4 @@ python -m torch.distributed.launch \
     $CONFIG \
     $CHECKPOINT \
     --launcher pytorch \
-    --tta \
     ${@:4}
