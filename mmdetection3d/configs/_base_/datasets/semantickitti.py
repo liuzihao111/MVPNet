@@ -232,10 +232,12 @@ test_dataloader = dict(
 # val_dataloader = test_dataloader
 
 val_evaluator = dict(type='SegMetric')
-test_evaluator = dict(
-    type='SegMetric',
-    submission_prefix=data_root + 'results'
-    )
+# test_evaluator = dict(
+#     type='SegMetric',
+#     submission_prefix=data_root + 'results'
+#     )
+
+test_evaluator = val_evaluator
 
 vis_backends = [dict(type='LocalVisBackend')]
 visualizer = dict(
