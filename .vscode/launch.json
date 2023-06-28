@@ -13,7 +13,7 @@
             "console": "integratedTerminal",
             "justMyCode": true,
             "args": [
-                "--nproc_per_node=1",
+                "--nproc_per_node=8",
                 "--master_port=29603",
                 "${cwd}/mmdetection3d/tools/test.py",
                 "${cwd}/mmdetection3d/configs/spvcnn/spvcnn_w32_8xb2-amp-laser-polar-mix-3x_semantickitti.py",

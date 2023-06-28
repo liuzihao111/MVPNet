@@ -89,10 +89,18 @@ class SegMetric(BaseMetric):
         # need to map network output to original label idx
         cat2label = np.zeros(len(self.dataset_meta['label2cat'])).astype(
             np.int64)
-        for original_label, output_idx in self.dataset_meta['label2cat'].items(
-        ):
-            if output_idx != ignore_index:
-                cat2label[output_idx] = original_label
+        # for original_label, output_idx in self.dataset_meta['label2cat'].items(
+        # ):
+        #     if output_idx != ignore_index:
+        #         cat2label[output_idx] = original_label
+
+        # gt_semantic_masks = []
+        # pred_semantic_masks = []
+
+        # for eval_ann, sinlge_pred_results in results:
+        #     gt_semantic_masks.append(eval_ann['pts_semantic_mask'])
+        #     pred_semantic_masks.append(
+        #         sinlge_pred_results['pts_semantic_mask'])
 
         for i, (eval_ann, result) in enumerate(results):
             sample_idx = eval_ann['point_cloud']['lidar_idx']

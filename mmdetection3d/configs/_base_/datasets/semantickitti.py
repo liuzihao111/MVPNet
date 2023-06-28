@@ -221,7 +221,7 @@ test_dataloader = dict(
     dataset=dict(
         type=dataset_type,
         data_root=data_root,
-        ann_file='semantickitti_infos_val.pkl', 
+        ann_file='semantickitti_infos_test.pkl', 
         pipeline=test_pipeline,
         metainfo=metainfo,
         modality=input_modality,
@@ -232,12 +232,12 @@ test_dataloader = dict(
 # val_dataloader = test_dataloader
 
 val_evaluator = dict(type='SegMetric')
-# test_evaluator = dict(
-#     type='SegMetric',
-#     submission_prefix=data_root + 'results'
-#     )
+test_evaluator = dict(
+    type='SegMetric',
+    submission_prefix=data_root + 'results'
+    )
 
-test_evaluator = val_evaluator
+# test_evaluator = val_evaluator
 
 vis_backends = [dict(type='LocalVisBackend')]
 visualizer = dict(
