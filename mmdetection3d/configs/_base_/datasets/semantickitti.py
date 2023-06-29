@@ -133,16 +133,16 @@ tta_pipeline = [
         load_dim=4,
         use_dim=4,
         backend_args=backend_args),
-    # dict(
-    #     type='LoadAnnotations3D',
-    #     with_bbox_3d=False,
-    #     with_label_3d=False,
-    #     with_seg_3d=True,
-    #     seg_3d_dtype='np.int32',
-    #     seg_offset=2**16,
-    #     dataset_type='semantickitti',
-    #     backend_args=backend_args),
-    # dict(type='PointSegClassMapping'),
+    dict(
+        type='LoadAnnotations3D',
+        with_bbox_3d=False,
+        with_label_3d=False,
+        with_seg_3d=True,
+        seg_3d_dtype='np.int32',
+        seg_offset=2**16,
+        dataset_type='semantickitti',
+        backend_args=backend_args),
+    dict(type='PointSegClassMapping'),
     dict(
         type='TestTimeAug',
         transforms=[[
@@ -221,7 +221,7 @@ test_dataloader = dict(
     dataset=dict(
         type=dataset_type,
         data_root=data_root,
-        ann_file='semantickitti_infos_test.pkl', 
+        ann_file='semantickitti_infos_val.pkl', 
         pipeline=test_pipeline,
         metainfo=metainfo,
         modality=input_modality,
@@ -232,12 +232,12 @@ test_dataloader = dict(
 # val_dataloader = test_dataloader
 
 val_evaluator = dict(type='SegMetric')
-test_evaluator = dict(
-    type='SegMetric',
-    submission_prefix=data_root + 'results'
-    )
+# test_evaluator = dict(
+#     type='SegMetric',
+#     submission_prefix=data_root + 'results'
+#     )
 
-# test_evaluator = val_evaluator
+test_evaluator = val_evaluator
 
 vis_backends = [dict(type='LocalVisBackend')]
 visualizer = dict(
